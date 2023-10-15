@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <link rel="shortcut icon" href="https://miro.medium.com/v2/resize:fit:2400/1*Dnsw1d0tJxNsWFm73TWqFQ.png" />
+  <link rel="shortcut icon" href="Images/edf.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#343a40" />
   <meta
           name="description"
-          content="Links To My Accounts | Developed By - Emin Devrim Fidan"
+          content="AWS S3 Basics Course | Emin Devrim Fidan"
   />  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-     <title>Emin Devrim Fidan</title>
+     <title>AWS S3 Basics Guided Project | Emin Devrim Fidan</title>
      <style>
        body{
          background-color: #faf8ef;
@@ -50,11 +50,20 @@
 <body>
 <div class="container">
   <div class="media mt-5">
-    <img src="https://miro.medium.com/v2/resize:fit:2400/1*Dnsw1d0tJxNsWFm73TWqFQ.png" class="m-3 borderimg" alt="image" width="75px" height="75px">
     <div class="media-body m-2">
-      <h5 class="align-items-center mt-2">Emin Devrim Fidan</h5>
-      <p>Senior Product Owner at <a href="https://www.ku.edu.tr?utm_source=Emin_Devrim_Fidan&utm_medium=web&utm_campaign=me" class="name" target="_blank">Koç University </a> <br>
-       based in Istanbul, Turkey.</p>
+      <h5 class="align-items-center mt-2">AWS S3 Basics Guided Project</h5>
+      <p>S3 stands for Simple Storage Service, it is a object-based storage service which AWS provides. S3 can also be used to host a static website. </p>
+      <p> Learning Objectives
+        <ul> 
+          <li> Create your First S3 Bucket and Upload Content to Bucket and Manage their Access</li>
+
+          <li> Enable S3 Encryption, S3 Versioning and Lifecycle management rules on S3 Bucket</li>
+
+          <li>Create Static Website using AWS S3</li> 
+</ul>
+</p>
+
+  
     </div>
   </div>
 <div class="mt-4">
@@ -73,73 +82,9 @@
 </div>
         <!--------------------Footer---------------------------->
   <div class="footer mt-5">
-    <div class="row">
-     
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="483dc18f-b6d8-44b7-8cf6-17fafd3a5aba" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="cf8f2a3f-bed5-4575-a1f9-1393ef6022cb" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="c4aac224-cf78-406e-86bb-63da027e0a55" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="3ebcbfd5-308f-497b-ba12-788d19eef6b6" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="aba2c976-e0b7-4623-84e4-9c1dc4fde84f" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-     
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="c7a146b2-ab07-4d07-ad28-a2f2b705c1d1" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>      
-      </div>
-       
-    </div>
-
-    <div class="row">
-
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="6d6876dd-3ed5-40d5-955c-796ecc438aba" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="a34b5a8e-f8c0-42da-9841-0ad301cfeffd" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="0bcbadc0-d49e-4353-913a-30515c0c3468" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="01b8fed0-f453-41f3-b739-0c2947e57229" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-      
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="756285e9-cbc5-4d7f-b218-ba496face06e" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-
-      <div class="col">
-        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="275defb4-df72-4991-ba89-1e07d43337d3" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-      </div>
-
-
-    </div>
-    <p><a href="https://codepen.io/devrimfidan/full/ZEVZqgN" class="name" target="_blank">my learning plan </a> <br>
-
-
-    
-    
-     <hr/>
+  
     <h6>Made With <span class="love">♥</span> in Istanbul, Turkey</h6>
-    <h6>
-      Proudly Hosted By
-      <a href="https://github.com/devrimfidan/Me?utm_source=Emin_Devrim_Fidan&utm_medium=web&utm_campaign=me" class="name" target="_blank"> (Github) </a>
-    </h6>
+   
   </div>
 </div>
 
