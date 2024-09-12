@@ -1,78 +1,261 @@
-*, *:before, *:after {
-  box-sizing: border-box;
+* {
+  font-family: "Noto Sans", sans-serif;
 }
 
-html {
-  font-size: 16px;
-}
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  line-height: 1.5;
-  color: #2c2c2c;
-  padding: 0 1rem;
+  background: lightgray;
+}
+.card-title a {
+  text-decoration: none !important;
+}
+.highlight {
+  background-color: #558dd438;
+    font-weight: 600;
+    color: black;
+    padding: 0 .3em;
+  border-bottom: 1px solid black;
+}
+.header-bar {
+  display: flex;
 }
 
-.container {
-  margin: 50px auto;
-  max-width: 800px;
-  font-size: 1rem;
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1em;
+  padding-left: 0 !important;;
 }
-
-article {
+.card {
+  list-style: none !important;
+  background: white;
+  box-shadow: 2px 3px 4px lightgray;
+  border-radius: .3em;
   position: relative;
-  padding-left: 1.5rem;
+  border-top: 10px solid #22354D;
 }
-article + article {
+.action-button {
+  background-color: #22354D;
+  color: white !important;
+  text-decoration: none !important;
+  padding: .35em .5em;
+  border-radius: .2em;
+  margin-top: .5em;
+  display: block;
+  width: fit-content;
+}
+.digital-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: firebrick;
+  padding: .1em .3em .1em .3em;
+  color: white;
+  border-radius: 5px;
+}
+.card-content {
+  padding: 1.5em;
+}
+.card-title {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+}
+.card-title h3 {
+      margin-top: 0 !important;
+  margin-bottom: .5em !important;
+  padding-top: 0 !important;
+}
+.point-person {
+  font-weight: 500;
+  font-size: 1.1rem
+}
+
+.card h4 {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.active {
+  position: absolute;
+  right: 5px;
+  height: 20px;
+  z-index: 20;
+  top: 10px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 25em;
+}
+
+.search-form ul {
+  padding-left: 1em;
+  margin-left: 0;
+}
+
+.search-form input {
+  padding: 12px 4px 12px 40px;
+  border: 1px solid #555;
+  background: transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat 13px center;
+  border-radius: 4px;
+  outline: none;
+  width: 100%;
+}
+
+.search-form input:focus-visible {
+  box-shadow: 2px 4px 10px #0000007d;
+  outline: #3838bba1 solid 2px;
+}
+
+@media (max-width: 1800px) {
+  .card-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1450px) {
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .card-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .search-form {
+    width: 100%;
+  }
+}
+
+.search-item-holder {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.search-button {
+  padding: 5px 1em 5px 1em;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: #565656;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 1px 2px 12px #80808038;
+}
+
+.search-button:hover {
+  background: #2164a8;
+  transition: 0.2s;
+  color: white;
+  border: #3838bba1 solid 1px;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 765px) {
+  .search-form input {
+    margin-bottom: -12px;
+  }
+}
+
+.top-searches {
+  margin: 0 0 0 1em;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.flex-wrap-break {
+  display: flex;
+  list-style: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: auto;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section-container {
+  padding: 0 2em 0 2em;
+}
+
+@media only screen and (max-width: 700px) {
+  .search-item-holder {
+    margin: 0.5em 2px 0.5em 2px;
+  }
+  .flexmargin {
+    flex: none;
+    margin-left: 0px;
+  }
+  .display-flex {
+    display: block !important;
+  }
+  .flex-wrap-break {
+    display: -ms-flexbox;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .top-searches {
+    margin: 0;
+  }
+  .flex-wrap-break div {
+    flex: 0 0 33.333%;
+  }
+  .section-container {
+    padding: 0 1em 0 1em;
+  }
+}
+
+
+.subnav {
+  display: flex;
+  list-style: none !important;
+  flex-wrap: wrap;
   margin-top: 1em;
-}
-article:before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 2px;
-  height: calc(100% + 1em);
-  top: 12px;
-  left: 0;
-  background-color: lightgray;
-}
-article:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  top: 6px;
-  left: -5px;
-  border-radius: 50%;
-  background-color: indianred;
-}
-article:last-child:before {
-  height: calc(100% - 1em);
-}
-article span {
-  font-size: 1em;
-  font-weight: 700;
-  color: indianred;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  flex: 1;
 }
 
-article span.event {
-  font-size: 1em;
-  font-weight: 700;
-  color: rgb(23, 127, 7);
+.subnav li {
+/*   margin-right: 1em; */
+  padding-top: 1em;
 }
 
-article h2 {
-  font-size: 1.25em;
-  font-weight: 700;
-  margin-top: 0.25em;
+.subnav li a {
+  text-decoration: none;
+  padding: .3em .8em .3em .8em;
+  position: relative;
+  border-radius: .1rem;
+  text-decoration: none !important;
 }
-article div {
-  font-size: 1.125em;
-}
-
-.divider {
-  font-size: 1.5em;
-  font-weight: 700;
-  margin: 1em 0 0.5em;
+.uk-active a {
+  background-color: #22354D;
+  color: whitesmoke !important;
 }
