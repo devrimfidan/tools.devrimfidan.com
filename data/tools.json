@@ -1,0 +1,100 @@
+{
+    "tools": [
+      {
+        "name": "Figma",
+        "url": "https://www.figma.com/",
+        "description": "A collaborative interface design tool that lets teams design, prototype, and collect feedback in a single platform.",
+        "categories": ["ui-ux", "prototyping", "collaboration"],
+        "rating": 4.8,
+        "pricing": "Free/Professional/Enterprise"
+      },
+      {
+        "name": "Jira",
+        "url": "https://www.atlassian.com/software/jira",
+        "description": "Project management tool that allows agile teams to plan, track, and manage their work.",
+        "categories": ["product-management", "project-management"],
+        "rating": 4.5,
+        "pricing": "Free/Standard/Premium/Enterprise"
+      },
+      {
+        "name": "Miro",
+        "url": "https://miro.com/",
+        "description": "Online collaborative whiteboard platform perfect for brainstorming, planning, and team collaboration.",
+        "categories": ["brainstorming", "collaboration", "ui-ux"],
+        "rating": 4.7,
+        "pricing": "Free/Team/Business/Enterprise"
+      },
+      {
+        "name": "ProductBoard",
+        "url": "https://www.productboard.com/",
+        "description": "Product management system that helps teams understand what users need, prioritize what to build, and rally everyone around the roadmap.",
+        "categories": ["product-management", "roadmapping", "customer-feedback"],
+        "rating": 4.6,
+        "pricing": "Starter/Scale/Enterprise"
+      },
+      {
+        "name": "Maze",
+        "url": "https://maze.co/",
+        "description": "Rapid testing platform that helps teams collect and analyze user testing feedback.",
+        "categories": ["user-research", "ui-ux"],
+        "rating": 4.4,
+        "pricing": "Professional/Organization"
+      },
+      {
+        "name": "Notion",
+        "url": "https://www.notion.so/",
+        "description": "All-in-one workspace for notes, documents, wikis, and project management.",
+        "categories": ["documentation", "collaboration", "project-management"],
+        "rating": 4.7,
+        "pricing": "Free/Plus/Business/Enterprise"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/",
+        "description": "Version control and collaboration platform for software development and project management.",
+        "categories": ["version-control", "development", "collaboration"],
+        "rating": 4.8,
+        "pricing": "Free/Team/Enterprise"
+      },
+      {
+        "name": "Amplitude",
+        "url": "https://amplitude.com/",
+        "description": "Product analytics platform that helps teams build better products through data-driven insights.",
+        "categories": ["analytics", "product-management"],
+        "rating": 4.5,
+        "pricing": "Starter/Growth/Enterprise"
+      },
+      {
+        "name": "Typeform",
+        "url": "https://www.typeform.com/",
+        "description": "Online form and survey platform that creates conversational data collection experiences.",
+        "categories": ["form-management", "user-research"],
+        "rating": 4.6,
+        "pricing": "Free/Basic/Plus/Business"
+      },
+      {
+        "name": "Linear",
+        "url": "https://linear.app/",
+        "description": "Issue tracking and project management tool built for high-performance teams.",
+        "categories": ["project-management", "development"],
+        "rating": 4.7,
+        "pricing": "Free/Standard/Plus"
+      },
+      {
+        "name": "Confluence",
+        "url": "https://www.atlassian.com/software/confluence",
+        "description": "Content collaboration software that helps teams create, organize, and collaborate on work.",
+        "categories": ["documentation", "collaboration"],
+        "rating": 4.4,
+        "pricing": "Free/Standard/Premium"
+      },
+      {
+        "name": "Hotjar",
+        "url": "https://www.hotjar.com/",
+        "description": "Behavior analytics software that helps understand how users interact with your product.",
+        "categories": ["analytics", "user-research"],
+        "rating": 4.5,
+        "pricing": "Free/Plus/Business"
+      }
+    ]
+  }

@@ -2,9 +2,154 @@
   font-family: "Noto Sans", sans-serif;
 }
 
+.card-title a {
+  text-decoration: none !important;
+}
 
+.highlight {
+  background-color: #558dd438;
+  font-weight: 600;
+  color: black;
+  padding: 0 .3em;
+  border-bottom: 1px solid black;
+}
+
+.header-bar {
+  display: flex;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1em;
+  padding-left: 0 !important;
+}
+
+.card {
+  list-style: none !important;
+  background: white;
+  box-shadow: 2px 3px 4px lightgray;
+  border-radius: .3em;
+  position: relative;
+  border-top: 10px solid #22354D;
+}
+
+.rating {
+  margin-top: 1em;
+  border-top: 1px solid #eee;
+  padding-top: 1em;
+}
+
+.rating-pricing-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+}
+
+.stars {
+  color: #FFD700;
+  font-size: 1.2em;
+}
+
+.rating-number {
+  color: #666;
+  margin-left: 0.5em;
+}
+
+.pricing-section {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.pricing-section i {
+  font-size: 1.1em;
+}
+
+.pricing-icon-free {
+  color: #10B981;
+}
+
+.pricing-icon-premium {
+  color: #9333EA;
+}
+
+.pricing-icon-enterprise {
+  color: #2563EB;
+}
+
+/* Original CSS continues below */
+.action-button {
+  background-color: #22354D;
+  color: white !important;
+  text-decoration: none !important;
+  padding: .35em .5em;
+  border-radius: .2em;
+  margin-top: .5em;
+  display: block;
+  width: fit-content;
+}
+
+.card-content {
+  padding: 1.5em;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+}
+
+.card-title h3 {
+  margin-top: 0 !important;
+  margin-bottom: .5em !important;
+  padding-top: 0 !important;
+}
+
+
+* {
+  font-family: "Noto Sans", sans-serif;
+}
+
+.search-sort-container {
+  display: flex; /* Enable flexbox */
+  align-items: center; /* Vertically align items */
+  justify-content: space-between; /* Distribute space between items */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 1em; /* Add some spacing between items */
+  margin-bottom: 1em; /* Add some spacing below the container */
+}
+
+.sort-controls {
+  display: flex;
+  align-items: center;
+  
+  gap: 0.5em; /* Space between label and select */
+}
+
+.sort-controls label {
+  white-space: nowrap; /* Prevent label from wrapping */
+  
+}
+
+#sort-select {
+  padding: 12px 4px; /* Same padding as search input */
+  border: 1px solid #555; /* Same border as search input */
+  border-radius: 4px; /* Same border-radius as search input */
+  background-color: #fff;
+}
+
+#sort-select:focus-visible {
+  outline: #3838bba1 solid 2px;
+  background-color: #fff;
+}
 body {
-  background: lightgray;
+  background: rgb(213, 213, 213);
 }
 .card-title a {
   text-decoration: none !important;
@@ -259,3 +404,5 @@ input[type="search"]::-webkit-search-cancel-button {
   background-color: #22354D;
   color: whitesmoke !important;
 }
+
+
