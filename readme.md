@@ -38,18 +38,22 @@ This project is inspired by [Riley Egger's Card Filter Pattern](https://codepen.
   "name": "Tool Name",
   "url": "https://tool-url.com",
   "description": "Tool description",
-  "categories": ["category1", "category2"]
+  "categories": ["category1", "category2"],
+  "rating": 4.5,
+  "pricing": "Free/Premium/Enterprise"
 }
 ```
 
 Available categories:
-- advertising
-- design
-- forms
-- integrations
-- photography
-- socialMedia
-- website
+- Product Management
+- UI/UX Design
+- Prototyping
+- User Research
+- Collaboration
+- Documentation
+- Brainstorming
+- Customer Feedback
+- Development Tools
 
 
 ## Deployment
@@ -63,3 +67,6 @@ Simply push to GitHub and enable GitHub Pages in your repository settings.
 3. Commit your changes
 4. Push to the branch
 5. Create a new Pull Request
+
+
+
