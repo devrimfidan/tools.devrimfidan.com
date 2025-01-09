@@ -30,14 +30,20 @@
   background: white;
   box-shadow: 2px 3px 4px lightgray;
   border-radius: .3em;
-  position: relative;
+  position: relative; /* Needed for absolute positioning of the footer */
   border-top: 10px solid #22354D;
+  padding-bottom: 5em; /* Add padding to prevent content overlap with footer */
 }
 
 .rating {
-  margin-top: 1em;
+  position: absolute; /* Position the rating at the bottom */
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Make the rating span the full width of the card */
+  margin-top: 0; /* Remove top margin */
   border-top: 1px solid #eee;
-  padding-top: 1em;
+  padding: 1em 1.5em;
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .rating-pricing-container {
@@ -97,6 +103,7 @@
 
 .card-content {
   padding: 1.5em;
+  flex-grow: 1; /* Allow content to grow and take up available space */
 }
 
 .card-title {
