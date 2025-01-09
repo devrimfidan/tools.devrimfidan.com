@@ -53,8 +53,8 @@ Available categories:
 - Documentation
 - Brainstorming
 - Customer Feedback
+- Analytics
 - Development Tools
-
 
 ## Deployment
 
