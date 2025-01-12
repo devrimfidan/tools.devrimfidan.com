@@ -77,7 +77,7 @@
         "url": "https://linear.app/",
         "description": "Issue tracking and project management tool built for high-performance teams.",
         "categories": ["project-management", "development"],
-        "rating": 4.7,
+        "rating": 4.3,
         "pricing": "Free/Standard/Plus"
       },
       {
@@ -134,7 +134,16 @@
         "categories": ["product-management", "ui-ux", "customer-feedback"],
         "rating": 4.5,
         "pricing": "Free/Pro"
+      },
+      {
+        "name": "Smartsheet",
+        "url": "https://www.smartsheet.com/",
+        "description": "Smartsheet is a platform for work management and automation, enabling teams to collaborate and manage projects, processes, and work in real-time.",
+        "categories": ["product-management", "project-management", "collaboration"],
+        "rating": 4.6,
+        "pricing": "Individual/Business/Enterprise"
       }
+      
       
       
       
