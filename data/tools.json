@@ -150,7 +150,16 @@
         "categories": ["product-management", "roadmapping", "collaboration"],
         "rating": 4.7,
         "pricing": "Standard/Premium/Enterprise"
+      },
+      {
+        "name": "Balsamiq",
+        "url": "https://balsamiq.com/",
+        "description": "Balsamiq is a rapid wireframing tool that helps you design user interfaces with low-fidelity mockups to visualize ideas and get feedback early.",
+        "categories": ["ui-ux", "prototyping"],
+        "rating": 4.5,
+        "pricing": "Free/Standard/Professional"
       }
+      
       
       
       
