@@ -214,7 +214,16 @@
         "categories": ["form-management", "automation", "collaboration"],
         "rating": 4.5,
         "pricing": "Starter/Pro/Enterprise"
+      },
+      {
+        "name": "JotForm",
+        "url": "https://www.jotform.com/",
+        "description": "JotForm is an easy-to-use online form builder that allows users to create custom forms for a variety of purposes, including surveys, registrations, and data collection.",
+        "categories": ["form-management", "collaboration", "automation"],
+        "rating": 4.6,
+        "pricing": "Free/Bronze/Silver/Gold"
       }
+      
       
       
       
