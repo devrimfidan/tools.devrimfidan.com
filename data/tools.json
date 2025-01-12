@@ -190,7 +190,16 @@
         "categories": ["ui-ux", "collaboration", "brainstorming"],
         "rating": 4.6,
         "pricing": "Free/Individual/Team/Enterprise"
+      },
+      {
+        "name": "IFTTT",
+        "url": "https://ifttt.com/",
+        "description": "IFTTT (If This Then That) is a web-based service that allows users to create conditional statements and automate tasks between various online services and devices.",
+        "categories": ["automation", "collaboration", "development"],
+        "rating": 4.4,
+        "pricing": "Free/Pro"
       }
+      
       
       
       
