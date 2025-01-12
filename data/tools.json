@@ -142,7 +142,16 @@
         "categories": ["product-management", "project-management", "collaboration"],
         "rating": 4.6,
         "pricing": "Individual/Business/Enterprise"
+      },
+      {
+        "name": "Jira Product Discovery",
+        "url": "https://www.atlassian.com/software/jira/product-discovery",
+        "description": "Jira Product Discovery is a tool to help product managers capture, prioritize, and validate ideas with their teams, transforming them into actionable product roadmaps.",
+        "categories": ["product-management", "roadmapping", "collaboration"],
+        "rating": 4.7,
+        "pricing": "Standard/Premium/Enterprise"
       }
+      
       
       
       
