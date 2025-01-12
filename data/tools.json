@@ -246,7 +246,16 @@
         "categories": ["analytics", "data-visualization", "business-intelligence"],
         "rating": 4.6,
         "pricing": "Creator/Explorer/Viewer"
+      },
+      {
+        "name": "Power Automate",
+        "url": "https://flow.microsoft.com/",
+        "description": "Power Automate is a Microsoft service that helps automate workflows between apps and services, streamlining tasks and processes.",
+        "categories": ["automation", "productivity", "business-intelligence"],
+        "rating": 4.5,
+        "pricing": "Free/Per User/Per Flow"
       }
+      
       
       
       
