@@ -119,7 +119,15 @@
         "categories": ["development", "product-management", "ui-ux"],
         "rating": 4.9,
         "pricing": "Free/Pro"
+      },{
+        "name": "Bolt.New",
+        "url": "https://bolt.new/",
+        "description": "Bolt.New is a tool that enables developers to rapidly prototype web applications with a focus on simplicity and speed.",
+        "categories": ["development", "ui-ux", "product-management"],
+        "rating": 4.7,
+        "pricing": "Free/Professional"
       }
+      
       
       
       
