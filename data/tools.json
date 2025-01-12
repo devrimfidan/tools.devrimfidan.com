@@ -198,7 +198,16 @@
         "categories": ["automation", "collaboration", "development"],
         "rating": 4.4,
         "pricing": "Free/Pro"
+      },
+      {
+        "name": "Zapier",
+        "url": "https://zapier.com/",
+        "description": "Zapier is an online automation tool that connects your favorite apps and services to automate repetitive tasks without coding or relying on developers to build the integration.",
+        "categories": ["automation", "collaboration", "productivity"],
+        "rating": 4.7,
+        "pricing": "Free/Starter/Professional/Team/Company"
       }
+      
       
       
       
