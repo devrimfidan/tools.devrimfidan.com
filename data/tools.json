@@ -238,7 +238,16 @@
         "categories": ["analytics", "data-visualization", "business-intelligence"],
         "rating": 4.7,
         "pricing": "Free/Pro/Premium"
+      },
+      {
+        "name": "Tableau",
+        "url": "https://www.tableau.com/",
+        "description": "Tableau is a powerful data visualization tool that helps users analyze and visualize their data with interactive dashboards and reports.",
+        "categories": ["analytics", "data-visualization", "business-intelligence"],
+        "rating": 4.6,
+        "pricing": "Creator/Explorer/Viewer"
       }
+      
       
       
       
