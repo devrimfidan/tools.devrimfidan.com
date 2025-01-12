@@ -174,7 +174,16 @@
         "categories": ["analytics", "digital-marketing"],
         "rating": 4.8,
         "pricing": "Lite/Standard/Advanced/Enterprise"
+      },
+      {
+        "name": "Canva",
+        "url": "https://www.canva.com/",
+        "description": "Canva is a graphic design platform that allows users to create social media posts, presentations, posters, documents, and other visual content with an easy-to-use drag-and-drop interface.",
+        "categories": ["ui-ux", "design", "digital-marketing"],
+        "rating": 4.7,
+        "pricing": "Free/Pro/Enterprise"
       }
+      
       
       
       
