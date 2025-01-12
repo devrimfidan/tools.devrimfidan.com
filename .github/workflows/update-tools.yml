@@ -1,0 +1,47 @@
+name: Update Tools JSON
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Parse Issue and Update JSON
+        id: update-json
+        run: |
+          ISSUE_BODY=$(echo "${{ github.event.issue.body }}" | tr -d '\r')
+          NAME=$(echo "$ISSUE_BODY" | grep -i "**Tool Name**:" | cut -d ':' -f 2 | xargs)
+          URL=$(echo "$ISSUE_BODY" | grep -i "**Website**:" | cut -d ':' -f 2 | xargs)
+          DESCRIPTION=$(echo "$ISSUE_BODY" | grep -i "**Description**:" | cut -d ':' -f 2- | xargs)
+          CATEGORIES=$(echo "$ISSUE_BODY" | grep -i "**Categories**:" | cut -d ':' -f 2 | xargs | sed 's/, /","/g')
+          RATING=$(echo "$ISSUE_BODY" | grep -i "**Rating**:" | cut -d ':' -f 2 | xargs)
+          PRICING=$(echo "$ISSUE_BODY" | grep -i "**Pricing**:" | cut -d ':' -f 2 | xargs)
+
+          if [ -z "$NAME" ] || [ -z "$URL" ] || [ -z "$DESCRIPTION" ] || [ -z "$CATEGORIES" ]; then
+            echo "Error: Missing required fields in the issue. Exiting."
+            exit 1
+          fi
+
+          # Add the new tool to the JSON file
+          jq --arg name "$NAME" \
+             --arg url "$URL" \
+             --arg description "$DESCRIPTION" \
+             --argjson categories "[\"$(echo $CATEGORIES)\"]" \
+             --argjson rating "$RATING" \
+             --arg pricing "$PRICING" \
+             '.tools += [{name: $name, url: $url, description: $description, categories: $categories, rating: $rating, pricing: $pricing}]' data/tools.json > data/tools_updated.json
+
+          mv data/tools_updated.json data/tools.json
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Add tool: ${{ github.event.issue.title }}"
+          file_pattern: "data/tools.json"
