@@ -206,7 +206,16 @@
         "categories": ["automation", "collaboration", "productivity"],
         "rating": 4.7,
         "pricing": "Free/Starter/Professional/Team/Company"
+      },
+      {
+        "name": "Formstack",
+        "url": "https://www.formstack.com/",
+        "description": "Formstack is a powerful form builder that helps businesses create online forms, surveys, and workflows to collect data and automate processes without needing to code.",
+        "categories": ["form-management", "automation", "collaboration"],
+        "rating": 4.5,
+        "pricing": "Starter/Pro/Enterprise"
       }
+      
       
       
       
