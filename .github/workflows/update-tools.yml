@@ -41,7 +41,8 @@ jobs:
           mv data/tools_updated.json data/tools.json
 
       - name: Commit and Push Changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: actions/commit-push@v1
         with:
           commit_message: "Add tool: ${{ github.event.issue.title }}"
           file_pattern: "data/tools.json"
+          branch: "main"  # Replace with your branch name if needed
