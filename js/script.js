@@ -1,46 +1,53 @@
+// Global state for tools data
+let toolsData = [];
+
 // Load tools from JSON
 async function loadTools() {
   try {
     const response = await fetch('./data/tools.json');
     const data = await response.json();
-    
-    const cardContainer = document.getElementById("cards");
-    cardContainer.innerHTML = ''; // Clear existing cards
-    
-    data.tools.forEach(tool => {
-      const stars = generateStars(tool.rating);
-      const pricingIcons = generatePricingIcons(tool.pricing);
-      const cardHTML = `
-        <li class="card ${tool.categories.join(' ')}" data-rating="${tool.rating}">
-          <div class="card-content">
-            <div class="card-title">
-              <h3><a target="_blank" class="service-title" href="${tool.url}">${tool.name}</a></h3>
-            </div>
-            <div class="card-body">
-              ${tool.description}
-            </div>
-            <div class="rating">
-              <div class="rating-pricing-container">
-                <div class="rating-section">
-                  <span class="stars">${stars}</span>
-                  <span class="rating-number">${tool.rating.toFixed(1)}</span>
-                </div>
-                <div class="pricing-section">
-                  ${pricingIcons}
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      `;
-      cardContainer.innerHTML += cardHTML;
-    });
-
+    toolsData = data.tools;
+    renderTools(toolsData);
     // Apply initial sort
     sortCards(document.getElementById('sort-select').value);
   } catch (error) {
     console.error('Error loading tools:', error);
   }
+}
+
+// Render tools to DOM
+function renderTools(tools) {
+  const cardContainer = document.getElementById("cards");
+  cardContainer.innerHTML = ''; // Clear existing cards
+  
+  tools.forEach(tool => {
+    const stars = generateStars(tool.rating);
+    const pricingIcons = generatePricingIcons(tool.pricing);
+    const cardHTML = `
+      <li class="card ${tool.categories.join(' ')}" data-rating="${tool.rating}">
+        <div class="card-content">
+          <div class="card-title">
+            <h3><a target="_blank" class="service-title" href="${tool.url}">${tool.name}</a></h3>
+          </div>
+          <div class="card-body">
+            ${tool.description}
+          </div>
+          <div class="rating">
+            <div class="rating-pricing-container">
+              <div class="rating-section">
+                <span class="stars">${stars}</span>
+                <span class="rating-number">${tool.rating.toFixed(1)}</span>
+              </div>
+              <div class="pricing-section">
+                ${pricingIcons}
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    `;
+    cardContainer.innerHTML += cardHTML;
+  });
 }
 
 // Generate star rating HTML
@@ -70,26 +77,55 @@ function generateStars(rating) {
 
 // Generate pricing icons HTML
 function generatePricingIcons(pricing) {
+  const pricingLower = pricing.toLowerCase();
   let icons = '';
   
-  if (pricing.toLowerCase().includes('free')) {
+  if (pricingLower.includes('free')) {
     icons += '<i class="fas fa-dollar-sign pricing-icon-free" title="Free tier available"></i>';
   }
-  if (pricing.toLowerCase().includes('pro') || 
-      pricing.toLowerCase().includes('premium') || 
-      pricing.toLowerCase().includes('business') || 
-      pricing.toLowerCase().includes('plus') || 
-      pricing.toLowerCase().includes('standard')) {
+  if (pricingLower.includes('pro') || 
+      pricingLower.includes('premium') || 
+      pricingLower.includes('business') || 
+      pricingLower.includes('plus') || 
+      pricingLower.includes('standard')) {
     icons += '<i class="fas fa-crown pricing-icon-premium" title="Premium tier"></i>';
   }
-  if (pricing.toLowerCase().includes('enterprise')) {
+  if (pricingLower.includes('enterprise')) {
     icons += '<i class="fas fa-building pricing-icon-enterprise" title="Enterprise tier"></i>';
   }
   
   return icons;
 }
 
-// Sort cards
+// Search functionality
+function mySearch() {
+  const searchInput = document.getElementById("cardSearch");
+  const filter = searchInput.value.toLowerCase();
+  const noResults = document.getElementById("no-results");
+  
+  // Filter tools based on search term
+  const filteredTools = toolsData.filter(tool => {
+    return tool.name.toLowerCase().includes(filter) || 
+           tool.description.toLowerCase().includes(filter);
+  });
+  
+  // Render filtered tools
+  renderTools(filteredTools);
+  
+  // Show/hide no results message
+  if (filteredTools.length === 0 && filter !== "") {
+    noResults.classList.remove("display-none");
+    document.getElementById("resultsSearchTerm").textContent = 
+      `There are no results for "${searchInput.value}"`;
+  } else {
+    noResults.classList.add("display-none");
+  }
+  
+  // Maintain current sort order
+  sortCards(document.getElementById('sort-select').value);
+}
+
+// Sort functionality
 function sortCards(sortType) {
   const cardContainer = document.getElementById("cards");
   const cards = Array.from(cardContainer.children);
@@ -109,7 +145,19 @@ function sortCards(sortType) {
     }
   });
   
+  // Reorder cards in DOM
   cards.forEach(card => cardContainer.appendChild(card));
+}
+
+// Handle category filter clicks
+function handleFilterClick() {
+  const hash = window.location.hash.slice(1);
+  if (hash) {
+    const filterButton = document.getElementById(hash);
+    if (filterButton) {
+      filterButton.click();
+    }
+  }
 }
 
 // Initialize
@@ -118,4 +166,5 @@ window.addEventListener('load', () => {
   handleFilterClick();
 });
 
+// Handle filter changes from URL hash
 window.addEventListener('hashchange', handleFilterClick);
