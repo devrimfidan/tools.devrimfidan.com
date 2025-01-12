@@ -182,7 +182,16 @@
         "categories": ["ui-ux", "design", "digital-marketing"],
         "rating": 4.7,
         "pricing": "Free/Pro/Enterprise"
+      },
+      {
+        "name": "LucidChart",
+        "url": "https://www.lucidchart.com/",
+        "description": "LucidChart is an online diagramming and flowchart software that helps teams to visualize processes, systems, and organizational structures with easy-to-use collaboration tools.",
+        "categories": ["ui-ux", "collaboration", "brainstorming"],
+        "rating": 4.6,
+        "pricing": "Free/Individual/Team/Enterprise"
       }
+      
       
       
       
