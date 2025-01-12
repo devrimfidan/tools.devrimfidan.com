@@ -1,14 +1,14 @@
 name: Update Tools JSON
 
 on:
-  issues:
-    types:
-      - opened
-      - edited
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/tools.json'
 
 jobs:
   update-json:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
