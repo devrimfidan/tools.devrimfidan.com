@@ -158,7 +158,16 @@
         "categories": ["ui-ux", "prototyping"],
         "rating": 4.5,
         "pricing": "Free/Standard/Professional"
+      },
+      {
+        "name": "Semrush",
+        "url": "https://www.semrush.com/",
+        "description": "Semrush is an all-in-one marketing toolkit for digital marketing professionals, offering tools for SEO, PPC, content, social media, and competitive research.",
+        "categories": ["analytics", "digital-marketing"],
+        "rating": 4.7,
+        "pricing": "Pro/Guru/Business"
       }
+      
       
       
       
