@@ -95,6 +95,24 @@
         "categories": ["analytics", "user-research"],
         "rating": 4.5,
         "pricing": "Free/Plus/Business"
+      },
+      {
+        "name": "Replit",
+        "url": "https://replit.com/",
+        "description": "Replit is an online development environment that allows users to write, compile, and run code in various programming languages.",
+        "categories": ["development", "collaboration", "product-management"],
+        "rating": 4.7,
+        "pricing": "Free/Pro/Team"
+      },
+      {
+        "name": "Adobe Podcast",
+        "url": "https://podcast.adobe.com/",
+        "description": "Adobe Podcast is a tool designed for creating professional podcasts, offering advanced features for audio editing and production.",
+        "categories": ["development", "collaboration", "product-management"],
+        "rating": 4.6,
+        "pricing": "Free/Professional"
       }
+      
+      
     ]
   }
