@@ -1,48 +1,85 @@
 name: Update Tools JSON
 
 on:
-  workflow_dispatch:
-  push:
-    paths:
-      - 'data/tools.json'
+  issues:
+    types: [opened]
 
 jobs:
   update-json:
-    runs-on: ubuntu-22.04
+    if: contains(github.event.issue.labels.*.name, 'enhancement')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Parse Issue and Update JSON
-        id: update-json
         run: |
-          ISSUE_BODY=$(echo "${{ github.event.issue.body }}" | tr -d '\r')
-          NAME=$(echo "$ISSUE_BODY" | grep -i "**Tool Name**:" | cut -d ':' -f 2 | xargs)
-          URL=$(echo "$ISSUE_BODY" | grep -i "**Website**:" | cut -d ':' -f 2 | xargs)
-          DESCRIPTION=$(echo "$ISSUE_BODY" | grep -i "**Description**:" | cut -d ':' -f 2- | xargs)
-          CATEGORIES=$(echo "$ISSUE_BODY" | grep -i "**Categories**:" | cut -d ':' -f 2 | xargs | sed 's/, /","/g')
-          RATING=$(echo "$ISSUE_BODY" | grep -i "**Rating**:" | cut -d ':' -f 2 | xargs)
-          PRICING=$(echo "$ISSUE_BODY" | grep -i "**Pricing**:" | cut -d ':' -f 2 | xargs)
-
-          if [ -z "$NAME" ] || [ -z "$URL" ] || [ -z "$DESCRIPTION" ] || [ -z "$CATEGORIES" ]; then
-            echo "Error: Missing required fields in the issue. Exiting."
-            exit 1
-          fi
-
-          # Add the new tool to the JSON file
+          # Parse the issue body
+          NAME=$(echo '${{ github.event.issue.body }}' | grep -i "**Tool Name**:" | cut -d ':' -f 2- | xargs)
+          URL=$(echo '${{ github.event.issue.body }}' | grep -i "**Website**:" | cut -d ':' -f 2- | xargs)
+          DESCRIPTION=$(echo '${{ github.event.issue.body }}' | grep -i "**Description**:" | cut -d ':' -f 2- | xargs)
+          CATEGORIES=$(echo '${{ github.event.issue.body }}' | grep -i "**Categories**:" | cut -d ':' -f 2- | sed 's/\[//g' | sed 's/\]//g' | tr ',' '\n' | jq -R -s -c 'split("\n")[:-1] | map(select(length > 0)) | map(trim)')
+          RATING=$(echo '${{ github.event.issue.body }}' | grep -i "**Rating**:" | cut -d ':' -f 2- | sed 's/\[//g' | sed 's/\]//g' | xargs)
+          PRICING=$(echo '${{ github.event.issue.body }}' | grep -i "**Pricing**:" | cut -d ':' -f 2- | sed 's/\[//g' | sed 's/\]//g' | xargs)
+          
+          # Update JSON file
           jq --arg name "$NAME" \
              --arg url "$URL" \
              --arg description "$DESCRIPTION" \
-             --argjson categories "[\"$(echo $CATEGORIES)\"]" \
+             --argjson categories "$CATEGORIES" \
              --argjson rating "$RATING" \
              --arg pricing "$PRICING" \
-             '.tools += [{name: $name, url: $url, description: $description, categories: $categories, rating: $rating, pricing: $pricing}]' data/tools.json > data/tools_updated.json
-
+             '.tools += [{
+               name: $name,
+               url: $url,
+               description: $description,
+               categories: $categories,
+               rating: $rating,
+               pricing: $pricing
+             }]' data/tools.json > data/tools_updated.json
+          
           mv data/tools_updated.json data/tools.json
 
-      - name: Commit and Push Changes
-        uses: actions/commit-push@v1
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/tools.json
+          git commit -m "Add tool: $NAME"
+          git push
+
+      - name: Comment and close issue
+        uses: actions/github-script@v6
         with:
-          commit_message: "Add tool: ${{ github.event.issue.title }}"
-          file_pattern: "data/tools.json"
-          branch: "main"  # Replace with your branch name if needed
+          script: |
+            // Add success comment
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              body: '✅ Tool has been successfully added to the database!'
+            });
+            
+            // Close the issue
+            await github.rest.issues.update({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              state: 'closed'
+            });
+
+      - name: Handle Failure
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              body: '❌ Error: Failed to add tool. Please check if all required fields are filled correctly.'
+            });
