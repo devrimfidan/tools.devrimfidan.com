@@ -111,7 +111,16 @@
         "categories": ["development", "collaboration", "product-management"],
         "rating": 4.6,
         "pricing": "Free/Professional"
+      },
+      {
+        "name": "V0",
+        "url": "https://v0.dev/",
+        "description": "V0 is a platform that simplifies building and deploying serverless applications using a simple API and workflow.",
+        "categories": ["development", "product-management", "ui-ux"],
+        "rating": 4.9,
+        "pricing": "Free/Pro"
       }
+      
       
       
     ]
