@@ -254,26 +254,15 @@
         "categories": ["automation", "productivity", "business-intelligence"],
         "rating": 4.5,
         "pricing": "Free/Per User/Per Flow"
+      },
+      {
+        "name": "Google Analytics",
+        "url": "https://analytics.google.com/",
+        "description": "Google Analytics is a web analytics service that provides detailed statistics and insights about the traffic and performance of websites.",
+        "categories": ["analytics", "data-visualization", "business-intelligence"],
+        "rating": 4.7,
+        "pricing": "Free/Premium"
       }
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
       
     ]
   }
