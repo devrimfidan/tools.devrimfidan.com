@@ -230,7 +230,16 @@
         "categories": ["form-management", "automation", "collaboration"],
         "rating": 4.4,
         "pricing": "Free/Standard/Professional/Enterprise"
+      },
+      {
+        "name": "Power BI",
+        "url": "https://powerbi.microsoft.com/",
+        "description": "Power BI is a business analytics tool from Microsoft that helps organizations visualize their data, share insights, and make data-driven decisions.",
+        "categories": ["analytics", "data-visualization", "business-intelligence"],
+        "rating": 4.7,
+        "pricing": "Free/Pro/Premium"
       }
+      
       
       
       
