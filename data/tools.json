@@ -126,7 +126,16 @@
         "categories": ["development", "ui-ux", "product-management"],
         "rating": 4.7,
         "pricing": "Free/Professional"
+      },
+      {
+        "name": "Lovable",
+        "url": "https://lovable.dev/",
+        "description": "Lovable is a tool designed to help teams deliver better product experiences with user feedback, insights, and collaboration.",
+        "categories": ["product-management", "ui-ux", "customer-feedback"],
+        "rating": 4.5,
+        "pricing": "Free/Pro"
       }
+      
       
       
       
