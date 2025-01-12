@@ -222,7 +222,16 @@
         "categories": ["form-management", "collaboration", "automation"],
         "rating": 4.6,
         "pricing": "Free/Bronze/Silver/Gold"
+      },
+      {
+        "name": "Zoho Forms",
+        "url": "https://www.zoho.com/forms/",
+        "description": "Zoho Forms is an online form builder that allows users to create forms, collect data, and automate workflows with powerful integrations and analytics.",
+        "categories": ["form-management", "automation", "collaboration"],
+        "rating": 4.4,
+        "pricing": "Free/Standard/Professional/Enterprise"
       }
+      
       
       
       
