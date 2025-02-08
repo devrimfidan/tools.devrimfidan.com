@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.line-numbers {
+  font-size: 13px;
+  background-color: #f0f0f0;
+  width: 40px;
+  height: 100%;
+}
+
+[contenteditable] {
+  font-family: Menlo, Consolas, monospace;
+  font-size: 13px;
+  white-space: pre;
+}
