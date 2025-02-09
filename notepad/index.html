@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notepad</title>
+  <link rel="shortcut icon" sizes="16x16" href="favicon.ico">
+  <link rel="stylesheet" href="css/notepad.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400">
+
+  <meta property="og:site_name" content="le717.github.io/notepad/">
+  <meta property="og:type" content="website">
+
+  <meta property="og:title" content="Notepad">
+  <meta property="og:url" content="https://le717.github.io/notepad/">
+  <meta property="og:description" content="Good ol' Windows Notepad, now available on the Web!">
+</head>
+
+<body class="win10">
+  <header>
+    <img width="19" height="16" alt="Logo" src="img/icon.png">
+    <h1><span id="title-file-name">Untitled</span> - Notepad</h1>
+  </header>
+
+  <nav class="menu">
+    <ul>
+      <li id="menu-file">File</li>
+      <li id="menu-edit">Edit</li>
+      <li id="menu-format">Format</li>
+      <li id="menu-view">View</li>
+      <li id="menu-help">Help</li>
+    </ul>
+
+    <div class="border" id="secondary"></div>
+    <div class="border" id="primary"></div>
+  </nav>
+
+  <nav class="menu-context file">
+    <div class="area-check">
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+    </div>
+
+    <label id="action-new">New</label>
+    <label class="menu-disabled">Open&hellip;</label>
+    <label id="action-save">Save</label>
+    <label id="action-save-as">Save As&hellip;</label>
+    <label class="menu-divider menu-disabled">Page Setup&hellip;</label>
+    <label id="action-print">Print&hellip;</label>
+    <label class="menu-disabled menu-divider">Exit</label>
+  </nav>
+
+  <nav class="menu-context edit">
+    <div class="area-check">
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+    </div>
+
+    <label class="menu-disabled">Undo</label>
+    <label class="menu-divider" id="action-cut">Cut</label>
+    <label id="action-copy">Copy</label>
+    <label class="menu-disabled">Paste</label>
+    <label class="menu-disabled">Delete</label>
+
+    <label class="menu-disabled menu-divider">Search with Bing&hellip;</label>
+    <label class="menu-disabled">Find&hellip;</label>
+    <label class="menu-disabled">Find Next&hellip;</label>
+    <label class="menu-disabled">Replace&hellip;</label>
+    <label class="menu-disabled">Go To&hellip;</label>
+
+    <label class="menu-divider" id="action-select-all">Select All</label>
+    <label id="action-time-date">Time/Date</label>
+  </nav>
+
+  <nav class="menu-context format">
+    <div class="area-check">
+      <input type="checkbox" id="word-wrap">
+      <div class="blank"></div>
+    </div>
+    <label for="word-wrap">Word Wrap</label>
+    <label class="menu-disabled">Font&hellip;</label>
+  </nav>
+
+  <nav class="menu-context view">
+    <div class="area-check">
+      <input type="checkbox" id="status-bar">
+    </div>
+
+    <label for="status-bar" id="action-status-bar">Status Bar</label>
+  </nav>
+
+  <nav class="menu-context help">
+    <div class="area-check">
+      <div class="blank"></div>
+      <div class="blank"></div>
+    </div>
+    <label id="action-view-help">View Help</label>
+    <label class="menu-divider menu-disabled">About Notepad</label>
+  </nav>
+
+  <div id="area-edit">
+    <textarea class="no-word-wrap" autocomplete="off" spellcheck="false" autofocus></textarea>
+  </div>
+
+  <div id="area-status-bar">
+    <div></div>
+    <div class="text">
+      Ln <span class="line-number"></span>, Col <span class="column-number"></span>
+    </div>
+  </div>
+
+  <script async src="js/notepad.js"></script>
+</body>
+</html>
