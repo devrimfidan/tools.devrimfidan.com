@@ -394,6 +394,28 @@ input[type="search"]::-webkit-search-cancel-button {
   }
 }
 
+/* Hamburger menu styles */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+}
+
+/* Hide the navigation menu by default on mobile views */
+@media (max-width: 768px) {
+  .subnav {
+    display: none;
+  }
+
+  .subnav.show {
+    display: block;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+}
 
 .subnav {
   display: flex;
