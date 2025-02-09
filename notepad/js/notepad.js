@@ -281,17 +281,7 @@
       var date = new Date(),
           curHour = date.getHours(),
           curMin  = date.getMinutes(),
-          timeOfDay = curHour > 11 ? "PM" : "AM",
           cursorPos = self.editor.selectionStart;
-
-      // Midnight
-      if (curHour === 0) {
-        curHour = "12";
-
-      // Afternoon
-      } else if (curHour > 11) {
-        curHour -= 12;
-      }
 
       // Pretty print the minutes
       if (curMin < 10) {
@@ -299,7 +289,7 @@
       }
 
       // Construct the formatted string
-      var dateString = `${curHour}:${curMin} ${timeOfDay} ${date.toLocaleDateString()}`;
+      var dateString = `${curHour}:${curMin} ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
       // Update the document with the date string
       var front = self.editor.value.substring(0, cursorPos),
