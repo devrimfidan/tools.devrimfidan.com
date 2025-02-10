@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satranç Oyunu</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        #chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 60px);
+            grid-template-rows: repeat(8, 60px);
+            gap: 0;
+            border: 2px solid #000;
+            position: relative;
+        }
+        .square {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+        .square.light {
+            background-color: #f0d9b5;
+        }
+        .square.dark {
+            background-color: #b58863;
+        }
+        .square .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(0, 255, 0, 0.5);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .square .circle.target {
+            background-color: rgba(255, 0, 0, 0.5);
+        }
+        .square.selected {
+            background-color: rgba(0, 0, 255, 0.3);
+        }
+        .piece {
+            cursor: grab;
+        }
+        .piece.dragging {
+            opacity: 0.5;
+        }
+        #info {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #moves {
+            margin-left: 20px;
+            font-size: 16px;
+            max-height: 480px;
+            overflow-y: auto;
+            width: 150px;
+        }
+        #moves div {
+            margin-bottom: 5px;
+        }
+        .board-label {
+            position: absolute;
+            font-size: 14px;
+            color: #000;
+        }
+        .board-label.col {
+            bottom: -20px;
+            text-align: center;
+            width: 60px;
+        }
+        .board-label.row {
+            left: -20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+        .badge {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: #555;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .badge:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="chessboard"></div>
+        <div id="info"></div>
+    </div>
+    <div id="moves"></div>
+
+    <!-- Made with DeepSeek Badge -->
+    <a href="https://www.deepseek.com" target="_blank" class="badge">Made with DeepSeek</a>
+
+    <script>
+        const board = [
+            ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
+            ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
+            ['', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', ''],
+            ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
+            ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖']
+        ];
+
+        let selectedPiece = null;
+        let currentPlayer = 'white';
+        let moves = [];
+        let gameOver = false;
+        let moveHistory = [];
+
+        const chessboard = document.getElementById('chessboard');
+        const info = document.getElementById('info');
+        const movesContainer = document.getElementById('moves');
+
+        const columns = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        const rows = ['8', '7', '6', '5', '4', '3', '2', '1'];
+
+        function createBoard() {
+            chessboard.innerHTML = '';
+
+            // Add column labels (a-h)
+            for (let col = 0; col < 8; col++) {
+                const label = document.createElement('div');
+                label.classList.add('board-label', 'col');
+                label.textContent = columns[col];
+                label.style.left = `${col * 60}px`;
+                chessboard.appendChild(label);
+            }
+
+            // Add row labels (1-8)
+            for (let row = 0; row < 8; row++) {
+                const label = document.createElement('div');
+                label.classList.add('board-label', 'row');
+                label.textContent = rows[row];
+                label.style.top = `${row * 60}px`;
+                chessboard.appendChild(label);
+            }
+
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const square = document.createElement('div');
+                    square.classList.add('square');
+                    square.classList.add((row + col) % 2 === 0 ? 'light' : 'dark');
+                    square.dataset.row = row;
+                    square.dataset.col = col;
+
+                    const piece = board[row][col];
+                    if (piece) {
+                        const pieceElement = document.createElement('div');
+                        pieceElement.textContent = piece;
+                        pieceElement.classList.add('piece');
+                        pieceElement.draggable = true;
+                        pieceElement.addEventListener('dragstart', (e) => onDragStart(e, row, col));
+                        pieceElement.addEventListener('dragend', onDragEnd);
+                        square.appendChild(pieceElement);
+                    }
+
+                    square.addEventListener('dragover', (e) => e.preventDefault());
+                    square.addEventListener('drop', (e) => onDrop(e, row, col));
+                    square.addEventListener('click', () => onSquareClick(row, col));
+
+                    chessboard.appendChild(square);
+                }
+            }
+            updateInfo();
+            highlightMoves();
+        }
+
+        function onSquareClick(row, col) {
+            if (gameOver) return;
+
+            const piece = board[row][col];
+            if (selectedPiece) {
+                if (moves.some(move => move[0] === row && move[1] === col)) {
+                    movePiece(selectedPiece.row, selectedPiece.col, row, col);
+                    selectedPiece = null;
+                    moves = [];
+                    currentPlayer = currentPlayer === 'white' ? 'black' : 'white';
+                    updateInfo();
+                    checkGameOver();
+                } else {
+                    selectedPiece = null;
+                    moves = [];
+                }
+                createBoard();
+            } else if (piece && (currentPlayer === 'white' ? isWhite(piece) : isBlack(piece))) {
+                selectedPiece = { row, col };
+                moves = getPossibleMoves(row, col);
+                createBoard();
+                highlightMoves();
+            }
+        }
+
+        function onDragStart(e, row, col) {
+            const piece = board[row][col];
+            if (piece && (currentPlayer === 'white' ? isWhite(piece) : isBlack(piece))) {
+                selectedPiece = { row, col };
+                moves = getPossibleMoves(row, col);
+                e.dataTransfer.setData('text/plain', `${row},${col}`);
+                e.target.classList.add('dragging');
+                createBoard();
+                highlightMoves();
+            } else {
+                e.preventDefault();
+            }
+        }
+
+        function onDragEnd(e) {
+            e.target.classList.remove('dragging');
+        }
+
+        function onDrop(e, row, col) {
+            e.preventDefault();
+            if (moves.some(move => move[0] === row && move[1] === col)) {
+                movePiece(selectedPiece.row, selectedPiece.col, row, col);
+                selectedPiece = null;
+                moves = [];
+                currentPlayer = currentPlayer === 'white' ? 'black' : 'white';
+                updateInfo();
+                checkGameOver();
+            }
+            createBoard();
+        }
+
+        function movePiece(fromRow, fromCol, toRow, toCol) {
+            const piece = board[fromRow][fromCol];
+            board[toRow][toCol] = piece;
+            board[fromRow][fromCol] = '';
+            const fromNotation = `${columns[fromCol]}${rows[fromRow]}`;
+            const toNotation = `${columns[toCol]}${rows[toRow]}`;
+            moveHistory.push(`${piece} ${fromNotation} to ${toNotation}`);
+            updateMoveHistory();
+        }
+
+        function getPossibleMoves(row, col) {
+            const piece = board[row][col];
+            const moves = [];
+            if (piece === '♙' || piece === '♟') { // Piyonlar
+                const direction = piece === '♙' ? -1 : 1;
+                if (board[row + direction][col] === '') moves.push([row + direction, col]);
+                if ((piece === '♙' && row === 6) || (piece === '♟' && row === 1)) {
+                    if (board[row + 2 * direction][col] === '') moves.push([row + 2 * direction, col]);
+                }
+                if (col > 0 && isOpponent(board[row + direction][col - 1], piece)) moves.push([row + direction, col - 1]);
+                if (col < 7 && isOpponent(board[row + direction][col + 1], piece)) moves.push([row + direction, col + 1]);
+            } else if (piece === '♘' || piece === '♞') { // Atlar
+                const knightMoves = [
+                    [row - 2, col - 1], [row - 2, col + 1],
+                    [row - 1, col - 2], [row - 1, col + 2],
+                    [row + 1, col - 2], [row + 1, col + 2],
+                    [row + 2, col - 1], [row + 2, col + 1]
+                ];
+                knightMoves.forEach(([r, c]) => {
+                    if (r >= 0 && r < 8 && c >= 0 && c < 8 && !isFriendly(board[r][c], piece)) moves.push([r, c]);
+                });
+            } else if (piece === '♗' || piece === '♝') { // Filler
+                addDiagonalMoves(row, col, piece, moves);
+            } else if (piece === '♖' || piece === '♜') { // Kaleler
+                addStraightMoves(row, col, piece, moves);
+            } else if (piece === '♕' || piece === '♛') { // Vezirler
+                addDiagonalMoves(row, col, piece, moves);
+                addStraightMoves(row, col, piece, moves);
+            } else if (piece === '♔' || piece === '♚') { // Şahlar
+                const kingMoves = [
+                    [row - 1, col - 1], [row - 1, col], [row - 1, col + 1],
+                    [row, col - 1], [row, col + 1],
+                    [row + 1, col - 1], [row + 1, col], [row + 1, col + 1]
+                ];
+                kingMoves.forEach(([r, c]) => {
+                    if (r >= 0 && r < 8 && c >= 0 && c < 8 && !isFriendly(board[r][c], piece)) moves.push([r, c]);
+                });
+            }
+            return moves;
+        }
+
+        function addDiagonalMoves(row, col, piece, moves) {
+            const directions = [
+                [-1, -1], [-1, 1],
+                [1, -1], [1, 1]
+            ];
+            directions.forEach(([dr, dc]) => {
+                let r = row + dr, c = col + dc;
+                while (r >= 0 && r < 8 && c >= 0 && c < 8) {
+                    if (board[r][c] === '') {
+                        moves.push([r, c]);
+                    } else if (isOpponent(board[r][c], piece)) {
+                        moves.push([r, c]);
+                        break;
+                    } else {
+                        break;
+                    }
+                    r += dr;
+                    c += dc;
+                }
+            });
+        }
+
+        function addStraightMoves(row, col, piece, moves) {
+            const directions = [
+                [-1, 0], [1, 0],
+                [0, -1], [0, 1]
+            ];
+            directions.forEach(([dr, dc]) => {
+                let r = row + dr, c = col + dc;
+                while (r >= 0 && r < 8 && c >= 0 && c < 8) {
+                    if (board[r][c] === '') {
+                        moves.push([r, c]);
+                    } else if (isOpponent(board[r][c], piece)) {
+                        moves.push([r, c]);
+                        break;
+                    } else {
+                        break;
+                    }
+                    r += dr;
+                    c += dc;
+                }
+            });
+        }
+
+        function isFriendly(piece1, piece2) {
+            return (isWhite(piece1) && isWhite(piece2)) || (isBlack(piece1) && isBlack(piece2));
+        }
+
+        function isOpponent(piece1, piece2) {
+            return (isWhite(piece1) && isBlack(piece2)) || (isBlack(piece1) && isWhite(piece2));
+        }
+
+        function highlightMoves() {
+            moves.forEach(move => {
+                const square = document.querySelector(`.square[data-row="${move[0]}"][data-col="${move[1]}"]`);
+                const circle = document.createElement('div');
+                circle.classList.add('circle');
+                if (board[move[0]][move[1]] !== '') {
+                    circle.classList.add('target');
+                }
+                square.appendChild(circle);
+            });
+            if (selectedPiece) {
+                const selectedSquare = document.querySelector(`.square[data-row="${selectedPiece.row}"][data-col="${selectedPiece.col}"]`);
+                selectedSquare.classList.add('selected');
+            }
+        }
+
+        function isWhite(piece) {
+            return piece === '♙' || piece === '♖' || piece === '♘' || piece === '♗' || piece === '♕' || piece === '♔';
+        }
+
+        function isBlack(piece) {
+            return piece === '♟' || piece === '♜' || piece === '♞' || piece === '♝' || piece === '♛' || piece === '♚';
+        }
+
+        function updateInfo() {
+            info.textContent = `Sıra: ${currentPlayer === 'white' ? 'Beyaz' : 'Siyah'}`;
+        }
+
+        function updateMoveHistory() {
+            movesContainer.innerHTML = '';
+            moveHistory.forEach((move, index) => {
+                const moveElement = document.createElement('div');
+                moveElement.textContent = `${index + 1}. ${move}`;
+                movesContainer.appendChild(moveElement);
+            });
+            movesContainer.scrollTop = movesContainer.scrollHeight;
+        }
+
+        function checkGameOver() {
+            // Şahmat ve beraberlik kontrolü buraya eklenebilir
+        }
+
+        createBoard();
+    </script>
+</body>
+</html>

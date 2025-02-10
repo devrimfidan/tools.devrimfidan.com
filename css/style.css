@@ -396,7 +396,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 /* Hamburger menu styles */
 .hamburger-menu {
-  display: none;
+  display: none; /* Initially hidden on larger screens */
   cursor: pointer;
   font-size: 24px;
   padding: 10px;
@@ -412,9 +412,11 @@ input[type="search"]::-webkit-search-cancel-button {
     display: block;
   }
 
-  .hamburger-menu {
-    display: block;
-  }
+/* Show the subnav when the 'show' class is added (by JavaScript) */
+.subnav.show {
+  display: block;
+  flex-direction: column; /* Stack the list items vertically */
+}
 }
 
 .subnav {
