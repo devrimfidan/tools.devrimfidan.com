@@ -55,7 +55,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
-            const response = await fetch('data.json');
+            const response = await fetch('data/tool.json');
             const data = await response.json();
             const toolContainer = document.getElementById("tool-container");
             const categoryList = document.getElementById("category-list");
