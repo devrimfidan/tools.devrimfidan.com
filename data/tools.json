@@ -12,7 +12,7 @@
         "name": "Jira",
         "url": "https://www.atlassian.com/software/jira",
         "description": "Project management tool that allows agile teams to plan, track, and manage their work.",
-        "categories": ["product-management", "project-management"],
+        "categories": ["favorite-tools", "product-management", "project-management"],
         "rating": 4.5,
         "pricing": "Free/Standard/Premium/Enterprise"
       },
@@ -20,7 +20,7 @@
         "name": "Miro",
         "url": "https://miro.com/",
         "description": "Online collaborative whiteboard platform perfect for brainstorming, planning, and team collaboration.",
-        "categories": ["brainstorming", "collaboration", "ui-ux"],
+        "categories": ["favorite-tools", "brainstorming", "collaboration", "ui-ux"],
         "rating": 4.7,
         "pricing": "Free/Team/Business/Enterprise"
       },
@@ -52,7 +52,7 @@
         "name": "GitHub",
         "url": "https://github.com/",
         "description": "Version control and collaboration platform for software development and project management.",
-        "categories": ["version-control", "development", "collaboration"],
+        "categories": ["favorite-tools", "version-control", "development", "collaboration"],
         "rating": 4.8,
         "pricing": "Free/Team/Enterprise"
       },
@@ -108,7 +108,7 @@
         "name": "Adobe Podcast",
         "url": "https://podcast.adobe.com/",
         "description": "Adobe Podcast is a tool designed for creating professional podcasts, offering advanced features for audio editing and production.",
-        "categories": ["development", "collaboration", "product-management"],
+        "categories": ["podcast-management"],
         "rating": 4.6,
         "pricing": "Free/Professional"
       },
@@ -116,7 +116,7 @@
         "name": "V0",
         "url": "https://v0.dev/",
         "description": "V0 is a platform that simplifies building and deploying serverless applications using a simple API and workflow.",
-        "categories": ["development", "product-management", "ui-ux"],
+        "categories": ["favorite-tools", "development", "product-management", "ui-ux"],
         "rating": 4.9,
         "pricing": "Free/Pro"
       },{
@@ -147,7 +147,7 @@
         "name": "Jira Product Discovery",
         "url": "https://www.atlassian.com/software/jira/product-discovery",
         "description": "Jira Product Discovery is a tool to help product managers capture, prioritize, and validate ideas with their teams, transforming them into actionable product roadmaps.",
-        "categories": ["product-management", "roadmapping", "collaboration"],
+        "categories": ["favorite-tools", "product-management", "roadmapping", "collaboration"],
         "rating": 4.7,
         "pricing": "Standard/Premium/Enterprise"
       },
@@ -283,7 +283,7 @@
         "name": "CodePen",
         "url": "https://codepen.io/",
         "description": "CodePen is an online community for testing and showcasing HTML, CSS, and JavaScript snippets.",
-        "categories": ["web-development", "frontend", "community"],
+        "categories": ["favorite-tools", "web-development", "frontend", "community"],
         "rating": 4.7,
         "pricing": "Free/Plus"
       },
@@ -315,7 +315,7 @@
         "name": "DeepSeek",
         "url": "https://deepseek.ai/",
         "description": "DeepSeek is a company focused on developing advanced AI models, particularly in the areas of large language models and code generation. They offer various models and tools for developers and researchers.",
-        "categories": ["ai", "large-language-models", "code-generation", "machine-learning"],
+        "categories": ["favorite-tools", "ai", "large-language-models", "code-generation", "machine-learning"],
         "rating": 4.5,
         "pricing": "Free/Plus/Business/Enterprise" 
       },
@@ -323,7 +323,7 @@
         "name": "Meta AI",
         "url": "https://ai.facebook.com/",
         "description": "Meta AI is Meta's research division dedicated to advancing the field of artificial intelligence. They work on a wide range of AI topics, including large language models, computer vision, and machine learning, and often release open-source tools and models.",
-        "categories": ["ai", "machine-learning", "deep-learning", "research"],
+        "categories": ["favorite-tools", "ai", "machine-learning", "deep-learning", "research"],
         "rating": 4.6,
         "pricing": "Free" 
       },
@@ -331,7 +331,7 @@
         "name": "NotebookLM",
         "url": "https://notebooklm.google.com/",
         "description": "NotebookLM is an AI-powered research assistant that helps you synthesize information from multiple sources, understand complex topics, and generate new ideas.",
-        "categories": ["ai", "research", "writing", "productivity"],
+        "categories": ["favorite-tools", "ai", "research", "writing", "productivity"],
         "rating": 4.5,
         "pricing": "Free/Plus/Business/Enterprise" 
       },
@@ -363,7 +363,7 @@
         "name": "Claude",
         "url": "https://claude.ai/",
         "description": "Claude is an AI assistant built by Anthropic, designed for conversations, search, and coding. It aims to be helpful, harmless, and honest.",
-        "categories": ["ai", "chatbots", "natural-language-processing", "coding"],
+        "categories": ["favorite-tools", "ai", "chatbots", "natural-language-processing", "coding"],
         "rating": 4.6,
         "pricing": "Plus/Business/Enterprise" 
       },
@@ -371,7 +371,7 @@
         "name": "ChatGPT",
         "url": "https://chat.openai.com/",
         "description": "ChatGPT is a large language model created by OpenAI. It's designed for conversational interactions, generating text, translating languages, writing different kinds of creative content, and answering your questions in an informative way.",
-        "categories": ["ai", "chatbots", "natural-language-processing", "language-models"],
+        "categories": ["favorite-tools", "ai", "chatbots", "natural-language-processing", "language-models"],
         "rating": 4.7,
         "pricing": "Free/Plus"
       },
@@ -379,7 +379,7 @@
         "name": "Google Gemini",
         "url": "https://gemini.google.com/",
         "description": "Google Gemini is a family of highly capable multimodal models. Gemini is optimized for different modalities, including text, code, images, audio, and video.",
-        "categories": ["ai", "multimodal-ai", "large-language-models", "machine-learning"],
+        "categories": ["favorite-tools", "ai", "multimodal-ai", "large-language-models", "machine-learning"],
         "rating": 4.7,
         "pricing": "Free/Plus/Business/Enterprise" 
       },
@@ -387,7 +387,7 @@
         "name": "Parcel",
         "url": "http://parcel.io/",
         "description": "Parcel is a zero configuration bundler for web applications.",
-        "categories": ["web-development", "bundler", "javascript"],
+        "categories": ["favorite-tools", "web-development", "bundler", "javascript"],
         "rating": 4.6,
         "pricing": "Free/Plus" 
       },
