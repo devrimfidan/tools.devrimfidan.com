@@ -1,7 +1,48 @@
+/* Add this to your style.css */
+
+/* General body and font settings (from your existing CSS) */
 * {
   font-family: "Noto Sans", sans-serif;
 }
 
+body {
+  /* background: rgb(213, 213, 213); remove this if you prefer Tailwind's bg-gray-100 */
+}
+
+/* Styling for filter dropdowns to ensure consistency */
+.filter-select {
+    /* Tailwind classes are mostly handling this, but you can add overrides or specifics here */
+    min-width: 120px; /* Ensure dropdowns have a minimum width */
+}
+
+/* Ensure icons in pricing/rating sections are aligned and have appropriate colors */
+.pricing-section i, .rating-section i {
+  vertical-align: middle;
+}
+
+.pricing-icon-free {
+  color: #10B981; /* Green for free */
+  margin-right: 4px;
+}
+
+.pricing-icon-premium {
+  color: #9333EA; /* Purple for premium/pro */
+  margin-right: 4px;
+
+}
+
+.pricing-icon-enterprise {
+  color: #2563EB; /* Blue for enterprise */
+  margin-right: 4px;
+}
+
+.pricing-text {
+    font-size: 0.8rem;
+    color: #6b7280; /* gray-500 */
+}
+
+
+/* Styles from your existing style.css - Review and integrate as needed */
 .card-title a {
   text-decoration: none !important;
 }
@@ -18,78 +59,71 @@
   display: flex;
 }
 
-.card-container {
+/* You are using Tailwind for grid, so this might be redundant or conflicting */
+/* .card-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1em;
   padding-left: 0 !important;
-}
+} */
 
-.card {
+/* Card styling - Tailwind is doing a lot of this now in index.html */
+/* .card {
   list-style: none !important;
   background: white;
   box-shadow: 2px 3px 4px lightgray;
   border-radius: .3em;
-  position: relative; /* Needed for absolute positioning of the footer */
+  position: relative; 
   border-top: 10px solid #22354D;
-  padding-bottom: 5em; /* Add padding to prevent content overlap with footer */
-}
+  padding-bottom: 5em; 
+} */
 
-.rating {
-  position: absolute; /* Position the rating at the bottom */
+/* Rating and Pricing Container - Tailwind flex is used in index.html */
+/* .rating {
+  position: absolute; 
   bottom: 0;
   left: 0;
-  width: 100%; /* Make the rating span the full width of the card */
-  margin-top: 0; /* Remove top margin */
+  width: 100%; 
+  margin-top: 0; 
   border-top: 1px solid #eee;
   padding: 1em 1.5em;
-  box-sizing: border-box; /* Include padding in width calculation */
+  box-sizing: border-box; 
 }
 
 .rating-pricing-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
 
-.rating-section {
+/* Rating Section - Tailwind flex is used */
+/* .rating-section {
   display: flex;
   align-items: center;
-}
+} */
 
-.stars {
-  color: #FFD700;
-  font-size: 1.2em;
+.stars { /* This class is still used for star color */
+  color: #FFD700; /* Gold for stars */
+  /* font-size: 1.2em; */ /* Tailwind text-xl might be preferred or adjust as needed */
 }
 
 .rating-number {
-  color: #666;
-  margin-left: 0.5em;
+  /* color: #666; */ /* Tailwind text-gray-600 is used */
+  /* margin-left: 0.5em; */ /* Tailwind ml-2 is used */
 }
 
-.pricing-section {
+/* Pricing Section - Tailwind flex is used */
+/* .pricing-section {
   display: flex;
   gap: 0.5em;
   align-items: center;
-}
+} */
 
-.pricing-section i {
+/* .pricing-section i {
   font-size: 1.1em;
-}
+} */
 
-.pricing-icon-free {
-  color: #10B981;
-}
 
-.pricing-icon-premium {
-  color: #9333EA;
-}
-
-.pricing-icon-enterprise {
-  color: #2563EB;
-}
-
-/* Original CSS continues below */
 .action-button {
   background-color: #22354D;
   color: white !important;
@@ -101,12 +135,12 @@
   width: fit-content;
 }
 
-.card-content {
+/* .card-content {
   padding: 1.5em;
-  flex-grow: 1; /* Allow content to grow and take up available space */
-}
+  flex-grow: 1; 
+} */
 
-.card-title {
+/* .card-title {
   font-weight: 600;
   font-size: 1.5rem;
   margin-bottom: .5rem;
@@ -116,144 +150,62 @@
   margin-top: 0 !important;
   margin-bottom: .5em !important;
   padding-top: 0 !important;
-}
-
-
-* {
-  font-family: "Noto Sans", sans-serif;
-}
+} */
 
 
 .search-sort-container {
-  display: flex; /* Enable flexbox */
-  align-items: center; /* Vertically align items */
-  justify-content: space-between; /* Distribute space between items */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  gap: 1em; /* Add some spacing between items */
-  margin-bottom: 1em; /* Add some spacing below the container */
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+  gap: 1em; 
+  margin-bottom: 1em; 
 }
 
 .sort-controls {
   display: flex;
   align-items: center;
-  
-  gap: 0.5em; /* Space between label and select */
+  gap: 0.5em; 
 }
 
 .sort-controls label {
-  white-space: nowrap; /* Prevent label from wrapping */
-  
+  white-space: nowrap; 
 }
 
-#sort-select {
-  padding: 12px 4px; /* Same padding as search input */
-  border: 1px solid #555; /* Same border as search input */
-  border-radius: 4px; /* Same border-radius as search input */
+/* #sort-select, #pricing-filter, #rating-filter {
+  padding: 12px 4px; 
+  border: 1px solid #555; 
+  border-radius: 4px; 
   background-color: #fff;
 }
 
-#sort-select:focus-visible {
+#sort-select:focus-visible, #pricing-filter:focus-visible, #rating-filter:focus-visible {
   outline: #3838bba1 solid 2px;
   background-color: #fff;
-}
-body {
-  background: rgb(213, 213, 213);
-}
-.card-title a {
-  text-decoration: none !important;
-}
-.highlight {
-  background-color: #558dd438;
-    font-weight: 600;
-    color: black;
-    padding: 0 .3em;
-  border-bottom: 1px solid black;
-}
-.header-bar {
-  display: flex;
+} */
+
+/* Sidebar category list styling */
+#category-list a {
+    display: block;
+    padding: 0.5rem; /* Equivalent to p-2 */
+    border-radius: 0.25rem; /* Equivalent to rounded */
+    transition: background-color 0.2s ease-in-out;
 }
 
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1em;
-  padding-left: 0 !important;;
-}
-.card {
-  list-style: none !important;
-  background: white;
-  box-shadow: 2px 3px 4px lightgray;
-  border-radius: .3em;
-  position: relative;
-  border-top: 10px solid #22354D;
-}
-.action-button {
-  background-color: #22354D;
-  color: white !important;
-  text-decoration: none !important;
-  padding: .35em .5em;
-  border-radius: .2em;
-  margin-top: .5em;
-  display: block;
-  width: fit-content;
-}
-.digital-badge {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: firebrick;
-  padding: .1em .3em .1em .3em;
-  color: white;
-  border-radius: 5px;
-}
-.card-content {
-  padding: 1.5em;
-}
-.card-title {
-  font-weight: 600;
-  font-size: 1.5rem;
-  margin-bottom: .5rem;
-}
-.card-title h3 {
-      margin-top: 0 !important;
-  margin-bottom: .5em !important;
-  padding-top: 0 !important;
-}
-.point-person {
-  font-weight: 500;
-  font-size: 1.1rem
+#category-list a:hover {
+    background-color: #4A5568; /* Equivalent to hover:bg-gray-700 */
 }
 
-.card h4 {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
-  font-size: 1.08rem;
-  font-weight: 600;
+#category-list a.bg-gray-600 { /* Style for active category */
+    background-color: #718096; /* bg-gray-600 */
+    font-weight: bold;
 }
 
-.active {
-  position: absolute;
-  right: 5px;
-  height: 20px;
-  z-index: 20;
-  top: 10px;
-}
 
-.search-form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 25em;
-}
+/* ... (Keep other relevant styles from your style.css) ... */
 
-.search-form ul {
-  padding-left: 1em;
-  margin-left: 0;
-}
-
-.search-form input {
+/* Ensure search input has the icon space */
+/* .search-form input {
   padding: 12px 4px 12px 40px;
   border: 1px solid #555;
   background: transparent
@@ -267,183 +219,22 @@ body {
 .search-form input:focus-visible {
   box-shadow: 2px 4px 10px #0000007d;
   outline: #3838bba1 solid 2px;
-}
+} */
 
+/* Media queries from your CSS - review if still needed with Tailwind */
 @media (max-width: 1800px) {
-  .card-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  /* Tailwind's responsive classes (sm:, md:, lg:) handle this better */
 }
-
-@media only screen and (max-width: 1450px) {
-  .card-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media only screen and (max-width: 1150px) {
-  .card-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .card-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .search-form {
-    width: 100%;
-  }
-}
-
-.search-item-holder {
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.search-button {
-  padding: 5px 1em 5px 1em;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: #565656;
-  white-space: nowrap;
-  cursor: pointer;
-  box-shadow: 1px 2px 12px #80808038;
-}
-
-.search-button:hover {
-  background: #2164a8;
-  transition: 0.2s;
-  color: white;
-  border: #3838bba1 solid 1px;
-}
-
-button {
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 765px) {
-  .search-form input {
-    margin-bottom: -12px;
-  }
-}
-
-.top-searches {
-  margin: 0 0 0 1em;
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-  white-space: nowrap;
-}
-
-.flex-wrap-break {
-  display: flex;
-  list-style: none;
-}
-
-input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: auto;
-}
+/* ... other media queries ... */
 
 .display-none {
   display: none;
 }
 
-.display-flex {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.section-container {
-  padding: 0 2em 0 2em;
-}
-
-@media only screen and (max-width: 700px) {
-  .search-item-holder {
-    margin: 0.5em 2px 0.5em 2px;
-  }
-  .flexmargin {
-    flex: none;
-    margin-left: 0px;
-  }
-  .display-flex {
-    display: block !important;
-  }
-  .flex-wrap-break {
-    display: -ms-flexbox;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-  .top-searches {
-    margin: 0;
-  }
-  .flex-wrap-break div {
-    flex: 0 0 33.333%;
-  }
-  .section-container {
-    padding: 0 1em 0 1em;
-  }
-  .card {
-    width: 100%;
-    margin: 0;
-  }
-  .card-container {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1em;
-    padding: 0;
-  }
-}
-
-/* Hamburger menu styles */
+/* Hamburger menu styles if you plan to use it for filters on mobile */
 .hamburger-menu {
-  display: none; /* Initially hidden on larger screens */
+  display: none; 
   cursor: pointer;
   font-size: 24px;
   padding: 10px;
 }
-
-/* Hide the navigation menu by default on mobile views */
-@media (max-width: 768px) {
-  .subnav {
-    display: none;
-  }
-
-  .subnav.show {
-    display: block;
-  }
-
-/* Show the subnav when the 'show' class is added (by JavaScript) */
-.subnav.show {
-  display: block;
-  flex-direction: column; /* Stack the list items vertically */
-}
-}
-
-.subnav {
-  display: flex;
-  list-style: none !important;
-  flex-wrap: wrap;
-  margin-top: 1em;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-  flex: 1;
-}
-
-.subnav li {
-/*   margin-right: 1em; */
-  padding-top: 1em;
-}
-
-.subnav li a {
-  text-decoration: none;
-  padding: .3em .8em .3em .8em;
-  position: relative;
-  border-radius: .1rem;
-  text-decoration: none !important;
-}
-.uk-active a {
-  background-color: #22354D;
-  color: whitesmoke !important;
-}
-
-

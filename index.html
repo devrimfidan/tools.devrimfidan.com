@@ -5,33 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tools Showcase</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="bg-gray-100">
     <div class="flex min-h-screen">
-        <!-- Sidebar -->
         <aside class="w-64 bg-gray-800 text-white p-4 hidden md:block">
             <h2 class="text-xl font-bold">Tool Categories</h2>
             <input type="text" id="sidebar-search" placeholder="Search..." class="w-full p-2 mt-2 rounded bg-gray-700 text-white">
             <ul id="category-list" class="mt-4 space-y-2"></ul>
         </aside>
 
-        <!-- Main Content -->
         <main class="flex-1 p-6">
             <div class="flex justify-between items-center mb-4">
                 <h1 class="text-2xl font-bold hidden sm:block">Tools</h1>
 
-                <div class="flex items-center space-x-4">
-                    <input type="text" id="search" placeholder="Search tools..." class="h-10 p-2 rounded border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <div class="relative">
+                <div class="flex items-center space-x-2 sm:space-x-4 flex-wrap">
+                    <input type="text" id="search" placeholder="Search tools..." class="h-10 p-2 rounded border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2 sm:mb-0">
+                    
+                    <div class="relative mb-2 sm:mb-0">
+                        <select id="pricing-filter" class="filter-select h-10 pl-3 pr-8 rounded border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
+                            <option value="all">All Prices</option>
+                            <option value="free">Free</option>
+                            <option value="paid">Paid</option> 
+                            {/* Add more specific options if needed, e.g., Free/Pro, Enterprise */}
+                        </select>
+                        <span class="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 pointer-events-none">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+
+                    <div class="relative mb-2 sm:mb-0">
+                        <select id="rating-filter" class="filter-select h-10 pl-3 pr-8 rounded border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
+                            <option value="all">All Ratings</option>
+                            <option value="5">5 Stars</option>
+                            <option value="4">4+ Stars</option>
+                            <option value="3">3+ Stars</option>
+                            <option value="2">2+ Stars</option>
+                            <option value="1">1+ Star</option>
+                        </select>
+                        <span class="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 pointer-events-none">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="relative mb-2 sm:mb-0">
                         <select id="sort-options" class="h-10 pl-3 pr-8 rounded border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
                             <option value="rating-desc">Rating: High to Low</option>
                             <option value="rating-asc">Rating: Low to High</option>
                             <option value="name-asc">A-Z</option>
                             <option value="name-desc">Z-A</option>
                         </select>
-                        <span class="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500">
+                        <span class="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 pointer-events-none">
                             <i class="fas fa-chevron-down"></i>
                         </span>
                     </div>
@@ -53,95 +78,6 @@
         </main>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", async () => {
-            const response = await fetch('data/tools.json');
-            const data = await response.json();
-            const toolContainer = document.getElementById("tool-container");
-            const categoryList = document.getElementById("category-list");
-            const searchInput = document.getElementById("search");
-            const sidebarSearch = document.getElementById("sidebar-search");
-            const sortOptions = document.getElementById("sort-options");
-            const gridViewBtn = document.getElementById("grid-view");
-            const listViewBtn = document.getElementById("list-view");
-            
-            let categories = new Set();
-
-            function renderTools(filterCategory = null, searchQuery = "", sortType = "rating-desc") {
-                toolContainer.innerHTML = "";
-                let tools = data.tools.filter(tool =>
-                    (!filterCategory || tool.categories.includes(filterCategory)) &&
-                    tool.name.toLowerCase().includes(searchQuery.toLowerCase())
-                );
-
-                tools.sort((a, b) => {
-                    if (sortType === "rating-desc") return b.rating - a.rating;
-                    if (sortType === "rating-asc") return a.rating - b.rating;
-                    if (sortType === "name-asc") return a.name.localeCompare(b.name);
-                    if (sortType === "name-desc") return b.name.localeCompare(a.name);
-                });
-
-                tools.forEach(tool => {
-                    const toolCard = document.createElement("div");
-                    toolCard.className = "bg-white p-4 rounded-lg shadow-md flex flex-col justify-between h-full";
-                    toolCard.innerHTML = `
-                        <div>
-                            <h2 class="text-xl font-bold"><a href="${tool.url}" target="_blank" class="text-blue-500 hover:underline">${tool.name}</a></h2>
-                            <p class="text-gray-600">${tool.description}</p>
-                        </div>
-                        <div class="mt-4 flex justify-between items-end">
-                            <div class="rating-section flex items-center">
-                                ${generateStars(tool.rating)}
-                                <span class="rating-number ml-2">${tool.rating}</span>
-                            </div>
-                            <div class="pricing-section text-gray-600">
-                                ${tool.pricing.includes("Free") ? '<i class="fas fa-dollar-sign pricing-icon-free" title="Free tier available"></i>' : ''}
-                                ${tool.pricing.includes("Professional") ? '<i class="fas fa-crown pricing-icon-premium" title="Premium tier"></i>' : ''}
-                                ${tool.pricing.includes("Enterprise") ? '<i class="fas fa-building pricing-icon-enterprise" title="Enterprise tier"></i>' : ''}
-                            </div>
-                        </div>
-                    `;
-                    toolContainer.appendChild(toolCard);
-                });
-            }
-
-            function generateStars(rating) {
-                let fullStars = Math.floor(rating);
-                let halfStar = rating % 1 >= 0.5 ? '<i class="fas fa-star-half-alt text-yellow-400"></i>' : '';
-                let emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-                return '<span class="stars text-yellow-400">' +
-                    '<i class="fas fa-star"></i>'.repeat(fullStars) +
-                    halfStar +
-                    '<i class="far fa-star"></i>'.repeat(emptyStars) +
-                    '</span>';
-            }
-
-            // Populate category list
-            categories.add("All");
-            data.tools.forEach(tool => tool.categories.forEach(category => categories.add(category)));
-            
-            categories.forEach(category => {
-                const categoryItem = document.createElement("li");
-                categoryItem.textContent = category;
-                categoryItem.className = "cursor-pointer hover:text-gray-300";
-                categoryItem.addEventListener("click", () => renderTools(category === "All" ? null : category));
-                categoryList.appendChild(categoryItem);
-            });
-
-            searchInput.addEventListener("input", () => renderTools(null, searchInput.value, sortOptions.value));
-            sidebarSearch.addEventListener("input", () => renderTools(null, sidebarSearch.value, sortOptions.value));
-            sortOptions.addEventListener("change", () => renderTools(null, searchInput.value, sortOptions.value));
-            gridViewBtn.addEventListener("click", () => {
-                toolContainer.classList.add("grid");
-                toolContainer.classList.remove("flex", "flex-col");
-            });
-            listViewBtn.addEventListener("click", () => {
-                toolContainer.classList.remove("grid");
-                toolContainer.classList.add("flex", "flex-col");
-            });
-
-            renderTools(); // Initial render
-        });
-    </script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
