@@ -1,3 +1,37 @@
+// Fetch data from Google Sheet using OpenSheet API
+const fetchTools = async () => {
+    try {
+        const response = await fetch('https://opensheet.elk.sh/1ZW6uYVdT_csRpKVTBnIoUA2FKGd5JDM73SCwZD7l3QI/tools');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching tools data:', error);
+        return [];
+    }
+};
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', async () => {
+    const toolsData = await fetchTools();
+    
+    if (toolsData.length === 0) {
+        document.getElementById('tool-container').innerHTML = `
+            <div class="col-span-full text-center py-10">
+                <p class="text-xl text-gray-600">Unable to load tools data. Please try again later.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Process and display the tools
+    displayTools(toolsData);
+    setupFilters(toolsData);
+    populateCategories(toolsData);
+});
+
 // Wait for the DOM to be fully loaded before running the script
 document.addEventListener("DOMContentLoaded", async () => {
     // Fetch the tools data from the JSON file
