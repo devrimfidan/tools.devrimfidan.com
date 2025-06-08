@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         // Create a new button for Google Sheet
         const googleSheetBtn = document.createElement('button');
-        googleSheetBtn.className = 'ml-2 p-2 bg-white rounded-md shadow-sm hover:bg-gray-100 focus:outline-none';
+        googleSheetBtn.className = 'ml-2 p-2 bg-white rounded-md shadow-sm hover:bg-gray-100 focus:outline-none hidden sm:block'; // Add hidden sm:block to hide on mobile
         googleSheetBtn.title = 'Open data source in Google Sheets';
         googleSheetBtn.innerHTML = '<i class="fas fa-table text-green-600"></i>';
         
