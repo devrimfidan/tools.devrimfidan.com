@@ -1,0 +1,413 @@
+$green: #4d9030;
+$ltgray: #ececec;
+$dkgray: #3b3b3b;
+$gray: #e3e8e8;
+
+$desktop: 1024px;
+$tablet: 768px;
+$phablet: 640px;
+$extra: 600px;
+$mobile: 540px;
+$mid: 460px;
+$phone: 360px;
+$iphone: 320px;
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+// Animation for project
+
+@keyframes shrinkPop {
+  0% {
+    transform: scale(0);
+  }
+  35% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes fade {
+  0% { 
+    opacity: 0; transform: translateY(0px); display: none;
+  }
+  10% {
+    opacity: 1; transform: translateY(-20px); display: block;
+  }
+  50% { 
+    opacity: .5; transform: translateY(-30px); 
+  }
+  100% { 
+    opacity: 0; transform: translateY(-90px); 
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes opa {
+  0% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+html {
+  background: $ltgray;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+.form {
+  font-weight: 300;
+  background: white;
+  max-width: 850px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px #aaa, -1px -1px 10px #aaa;
+  padding: 20pt 20pt 30pt;
+  margin: 3% auto 0;
+  @media screen and (max-width: $phablet) {
+    margin: 3%;
+    padding: 10pt 10pt 15pt;
+  }
+  @media screen and (max-width: $mid) {
+    padding: 10pt 10pt 8%;
+  }
+}
+
+.incentive {
+  margin-bottom: 20pt;
+  font-size: 22pt;
+  @media screen and (max-width: $phablet) {
+    display: inline-block;
+    max-width: 600px;
+    width: 69%;
+    margin:auto;
+    font-size: 6.08vw;
+    text-align: left;
+    vertical-align: middle;
+  }
+  @media screen and (max-width: $iphone) {
+    font-size: 14.7pt;
+  }
+}
+
+.emphasis {
+  font-weight: 900;
+  color: $dkgray;
+  
+}
+
+.points-system, .survey {
+  height: 206px;
+  position: relative;
+}
+
+.points-system {
+    background: $gray;
+    display: inline-block;
+    width: auto;
+    vertical-align: middle; 
+    margin-right: 1%;
+    text-align: center;
+    width: 28%;
+    @media screen and (max-width: $phablet) {
+      height: 130px;
+      margin-right: 2%;
+    }
+    @media screen and (max-width: $mid) {
+      height: 100px;
+    }
+    @media screen and (max-width: $phone) {
+      height: 75px;
+    }
+ }
+
+.points-total {
+  display: inline-block;
+  font-weight: 600;
+  color: $green;
+  font-size: 110%;
+  vertical-align: middle;
+}
+
+.opt-out, {
+  font-size: 15pt;
+  margin-top: 5pt;
+  @media screen and (max-width: $phablet) {
+    font-size: 13pt;
+  }
+  &.desktop {
+    @media screen and (max-width: $phablet) {
+      display: none;
+    }
+  }
+  &.mobile {
+    display: none;
+    @media screen and (max-width: $phablet) {
+      display: block;
+    }
+  }
+  a {
+    color: $green;
+  }
+}
+
+.survey {
+  background: $gray;
+  display: inline-block;
+  width: 70%;
+  vertical-align: middle;
+  max-width: 570px;
+  @media screen and (max-width: $phablet) {
+    background: white;
+    width: 100%;
+    height: auto;
+  }
+  &-wrap {
+    margin: 20pt;
+    font-size: 22pt;
+    @media screen and (max-width: $phablet) {
+      margin: 2% auto auto;
+    }
+  }
+}
+
+.question {
+  margin-bottom: 20pt;
+  font-size: 125%;
+  display: none;
+  &.visible {
+    display: block;
+  }
+  @media screen and (max-width: $mid) {
+    font-size: 100%;
+    margin-bottom: 4%;
+  }
+}
+
+.question-text {
+  color: $green;
+  font-weight: 900;
+  display: block;
+  line-height: 1;
+}
+
+.button {
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  @media screen and (max-width: $phablet) {
+    max-width: 100%;
+  }
+  
+  &-yes, &-no {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    border: none;
+    max-width: 228px;
+    width: 100%;
+    border-radius: 5px;
+    height: 70px;
+    background: white;
+    box-shadow: inset 0px 0px 0px 3px $green;
+    font-weight: 900;
+    @media screen and (max-width: 808px) {
+      width: 48%;
+    }
+    @media screen and (max-width: $phablet) {
+      max-width: 100%;
+    }
+    @media screen and (max-width: $mid) {
+      width: 100%;
+    }
+    @media screen and (max-width: $phone) {
+      height: 60px;
+    }
+  }
+  &-yes {
+    margin-right: 1.5%;
+    @media screen and (max-width: $mid) {
+      margin: auto auto 2%;
+    }
+    &:hover {
+      background: $green;
+      color: white;
+      box-shadow: 0 1px 4px rgba(0,0,0,.15);
+      transition-duration: .2s;
+      transition-property: transform;
+      transform: translateY(-4px);
+      i {
+        color: white;
+      }
+    }
+    &:not(:hover) {
+      transition-duration: .4s;
+      transition-property: transform;
+    }
+    i {
+        color: $green;
+      }
+  }
+  &-no {
+    i {
+        color: gray;
+      }
+    &:hover {
+      box-shadow: 0 1px 4px rgba(0,0,0,.15);
+      transition-duration: .3s;
+      transition-property: transform;
+      transform: translateY(4px);
+      color: white;
+      background: gray;
+      i {
+        color: white;
+      }
+    }
+    &:not(:hover) {
+      transition-duration: .4s;
+      transition-property: transform;
+    }
+  }
+  i {
+      display: none;
+      
+      &.pop {
+        animation: shrinkPop 800ms 1;
+      }
+    }
+}
+
+.progress-counter, .floating-progress-counter {
+  font-size: 22pt;
+  position: absolute;
+  z-index: 1000;
+  color: $green;
+  font-weight: 900;
+  font-family: 'Lato', sans-serif;
+  top: 36%;
+  left: 0;
+  right: 0;
+  @media screen and (max-width: $phablet) {
+    font-size: 20pt;
+  }
+  @media screen and (max-width: $mid) {
+    font-size: 14pt;
+  }
+  @media screen and (max-width: $phone) {
+    top: 30%;
+  }
+}
+
+// .progress-counter {
+//   display: none;
+// }
+
+.floating-progress-counter {
+  color: #A6C69D;
+  opacity: 0;
+  &.animate {
+    animation-name: fade;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-delay: .5s;
+    animation-iteration-count: 1;
+  }
+}
+
+.wrapper {
+  max-width: 130px;
+  height: 130px;
+  position: relative;
+  background: white;
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+  margin: 8% auto;
+  @media screen and (max-width: $phablet) {
+    max-width: 105px;
+    height: 105px;
+  }
+  @media screen and (max-width: 460px) {
+    max-width: 80px;
+    height: 80px;
+  }
+  @media screen and (max-width: 360px) {
+    max-width: 60px;
+    height: 60px;
+  }
+  &:hover .spinner, &:hover .filler, &:hover .mask {
+    animation-play-state: running;
+  }
+  
+  .newCircle {
+    width: 50%;
+    height: 100%;
+    transform-origin: 100% 50%;
+    position: absolute;
+    background: #fff;
+    border: 5px solid #4d9030;
+  }
+  
+  .spinner {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    z-index: 200;
+    border-right: none;
+    &.active {
+      animation: rotate .5s linear;
+    }
+  }
+  
+  .filler {
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    left: 50%;
+    opacity: 0;
+    z-index: 100;
+    border-left: none;
+    &.active {
+      animation: opa .5s steps(1, end) reverse;
+    } 
+  }
+  
+  .mask {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    opacity: 1;
+    z-index: 300;
+    border-radius: 150px 0px 0px 150px;
+    overflow: hidden;
+    &.active {
+      animation: opa .5s steps(1, end);
+    }
+  }
+}
+
+#ss_submit_button {
+  display: none;
+}
+
+// trying this out

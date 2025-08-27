@@ -1,0 +1,59 @@
+<!-- REMOVE FORM TAG AND PHO-SUBMIT button FOR REAL THING!!! -->
+
+<form>
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <div class="form">
+
+    <div class="input-area">
+      <div class="incentive">
+        Score <span class="emphasis"><span class="score-counter">40</span> more</span> points to complete survey
+      </div>
+      <div class="points-system">
+        <div class="wrapper">
+          <div class="newCircle spinner"></div>
+          <div class="newCircle filler"></div>
+          <div class="mask"></div>
+          <div class="progress-counter">0pts</div>
+          <div class="floating-progress-counter">0pts</div>
+        </div>
+
+        <div class="opt-out desktop">
+          <a href="#">Skip My Points</a>
+        </div>
+      </div>
+      <div class="survey">
+        <div class="survey-wrap">
+          <div class="questions-wrap">
+          </div>
+          <div class="button">
+            <button type="button" name="submit" id="submit" class="submit button-yes">
+              <i class="fa fa-thumbs-up fa-2x"></i>
+              <span class="span-yes">Yes</span>
+            </button>
+            <button type="button" name="no" id="no" class="button-no">
+              <i class="fa fa-thumbs-up fa-2x"></i>
+              <span class="span-no">No</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="opt-out mobile">
+    <a href="#">Skip My Points</a>
+  </div>
+  <!-- <script src="https://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script> -->
+  <input type="submit" id="ss_submit_button">
+</form>
+
+<template class="question-template">
+  <div class="question">
+    <input type="hidden" class="coreg-field" name="">
+    <input type="hidden" class="question-value" value="" />
+    <span class="question-text"></span>
+  </div>
+</template>
